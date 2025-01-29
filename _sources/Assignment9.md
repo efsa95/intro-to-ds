@@ -15,7 +15,7 @@ kernelspec:
 
 +++
 
-## 9.3.1. Linear Regression Basics
+## Linear Regression Basics
 
 ```{code-cell} ipython3
 # basic libraries
