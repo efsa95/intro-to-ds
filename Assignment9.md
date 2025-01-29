@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Assignment 9: Regression and Optimization
+# Regression and Optimization
 
 +++
 
