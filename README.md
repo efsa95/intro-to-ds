@@ -1,3 +1,6 @@
 # intro-to-ds
 
-test
+## To Do:
+- Add all assignments
+- reformat graphs
+- re format titles 
