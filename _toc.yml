@@ -1,6 +1,5 @@
 format: jb-book
-root: intro
+root: README
 chapters:
-  - file: about
-  - file: success
+  - file: Assignment9
 # - file: submission_1_intro
