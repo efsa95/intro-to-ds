@@ -1,5 +1,7 @@
 format: jb-book
 root: README
-chapters:
-  - file: Assignment9
+parts:
+- caption: Assignments
+  chapters:
+    - file: Assignment9
 # - file: submission_1_intro
