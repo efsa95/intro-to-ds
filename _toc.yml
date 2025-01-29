@@ -4,4 +4,5 @@ parts:
 - caption: Assignments
   chapters:
     - file: Assignment9
+    - file: Albums_runtime
 # - file: submission_1_intro
