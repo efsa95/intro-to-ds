@@ -4,6 +4,7 @@ parts:
 - caption: Projects
   chapters:
     - file: loading_data.md
+    - file: explore_coffee.md
     - file: Assignment9
     - file: Albums_runtime
 # - file: submission_1_intro
