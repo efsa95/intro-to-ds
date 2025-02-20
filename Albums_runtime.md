@@ -263,7 +263,7 @@ sns.lineplot(data=albums_clean_df,x='Release Year', y='Run-Time(Mins)')
 sns.catplot(data=albums_clean_df,x='Release Year', y='Run-Time(Mins)',kind='bar', hue='Length Rating')
 ```
 
-# Summery
+# Summary
 
 +++
 
