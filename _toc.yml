@@ -3,6 +3,7 @@ root: README
 parts:
 - caption: Assignments
   chapters:
+    - file: loading_data.md
     - file: Assignment9
     - file: Albums_runtime
 # - file: submission_1_intro
