@@ -1,7 +1,7 @@
 format: jb-book
 root: README
 parts:
-- caption: Assignments
+- caption: Projects
   chapters:
     - file: loading_data.md
     - file: Assignment9
