@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Top Albums and Runtime &#8212; CSC 310 Portfolio</title>
+    <title>Top Albums and Runtime with Web Scraping &#8212; CSC 310 Portfolio</title>
   
   
   
@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Albums_runtime';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Exploring Data Sets" href="loading_data.html" />
     <link rel="prev" title="Regression and Optimization" href="Assignment9.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,13 +164,16 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="loading_data.html">Exploring Data Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="explore_coffee.html">Quality Testing and Visuals</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Assignment9.html">Regression and Optimization</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Top Albums and Runtime</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Top Albums and Runtime with Web Scraping</a></li>
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Small Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="loading_data.html">Exploring Data Sets</a></li>
 </ul>
 
     </div>
@@ -308,7 +312,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Top Albums and Runtime</h1>
+    <h1>Top Albums and Runtime with Web Scraping</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -318,23 +322,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Top Albums and Runtime</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Top Albums and Runtime with Web Scraping</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-does-album-run-time-have-anything-to-do-with-being-a-top-selling-album-in-a-year">Question: Does album run time have anything to do with being a top selling album in a year?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-thing-i-do-is-create-the-bs4-object">The first thing I do is create the bs4 object</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-here-i-explored-the-websit-using-inspect-and-found-tbody-was-holding-all-of-the-lists-of-names-and-links">From here I explored the websit using inspect and found ‘tbody’ was holding all of the lists of names and links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-found-all-the-links-to-the-individual-albums-were-wrapped-in-i-tags-using-a-i-can-isolate-the-individual-links-and-names">I found all the links to the individual albums were wrapped in i tags, using “.a” I can isolate the individual links and names</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-test-looping-through-wiki-content-1-to-make-sure-i-can-get-all-the-names">I test looping through wiki_content[1] to make sure I can get all the names</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-then-apply-this-to-the-entire-wiki-content-list">I then apply this to the entire wiki_content list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-test-getting-the-links-and-concatenate-the-front-of-the-wiki-website">I test getting the links and concatenate the front of the wiki website</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-test-getting-the-runtime-and-year-released-from-the-constructed-link">I test getting the runtime and year released from the constructed link</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-first-construct-all-the-links">I first construct all the links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bs4-object">The bs4 object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-consistency">Getting consistency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-runtime-and-year-released-from-the-constructed-link">Getting the runtime and year released from the constructed link</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-to-construct-links">Method to construct Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#after-finding-out-how-to-extract-the-run-time-i-use-a-loop-to-do-requests-through-all-associated-links">After finding out how to extract the run time I use a loop to do requests through all associated links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-drop-all-n-a-s-and-duplicates">I drop all N/A’s and duplicates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-start-cleaning-my-data-br-removing-all-na-s-and-duplicates">I start cleaning my data br removing all na’s and duplicates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-noticed-we-really-only-get-relevant-data-from-2015-so-i-drop-anything-earlier-than-2015">I noticed we really only get relevant data from 2015, so I drop anything earlier than 2015</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-irrelevant-data">Removing irrelevant Data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summery">Summery</a></li>
 </ul>
 
             </nav>
@@ -347,266 +347,166 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="top-albums-and-runtime">
-<h1>Top Albums and Runtime<a class="headerlink" href="#top-albums-and-runtime" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="top-albums-and-runtime-with-web-scraping">
+<h1>Top Albums and Runtime with Web Scraping<a class="headerlink" href="#top-albums-and-runtime-with-web-scraping" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>This project was very open ended; we had to think of a question that we could solve through web scraping data.</p></li>
+<li><p>My question was related to my interests in the music world, friends of mine always said “short pop songs are all that matter” so I wanted to see if album run time varied across the hit albums of the last few years.</p></li>
+<li><p>This was a fantastic exercise in actually understanding how data scientists might collect data but also how much is needed to come to a real conclusion, my analysis was good but it was clear I need another piece to this story, data that would show what the average album runtime was to compare.</p></li>
+<li><p>It’s also interesting because Taylor swift dominated the charts and had relatively long albums, but that doesn’t mean we should assume she’s popular from this alone as there are obviously other factors in play.</p></li>
+<li><p>A more interesting rout would be to see if upcoming stars and groups tend to release longer or shorter albums.</p></li>
+</ul>
 <section id="question-does-album-run-time-have-anything-to-do-with-being-a-top-selling-album-in-a-year">
 <h2>Question: Does album run time have anything to do with being a top selling album in a year?<a class="headerlink" href="#question-does-album-run-time-have-anything-to-do-with-being-a-top-selling-album-in-a-year" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 </pre></div>
 </div>
-</div>
-</div>
 <p>This is a link to the starting wiki:
 <a class="reference external" href="https://en.wikipedia.org/wiki/Top_Album_Sales#2024">albums</a></p>
 </section>
-<section id="the-first-thing-i-do-is-create-the-bs4-object">
-<h2>The first thing I do is create the bs4 object<a class="headerlink" href="#the-first-thing-i-do-is-create-the-bs4-object" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Top_Album_Sales#2020&#39;</span>
+<section id="the-bs4-object">
+<h2>The bs4 object<a class="headerlink" href="#the-bs4-object" title="Permalink to this heading">#</a></h2>
+<p>After first retreaving and parsing the html I explored the websit using inspect and found ‘tbody’ was holding the lists of names and links. All the links to the individual albums were wrapped in i tags, using “.a” so we isolate the individual links and names.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Top_Album_Sales#2020&#39;</span>
+<span class="n">albums_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">albums_url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+<span class="n">cs_albums</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">albums_html</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">cs_albums</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">albums_url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bs4.BeautifulSoup
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cs_albums</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">albums_html</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span> <span class="o">=</span> <span class="n">cs_albums</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;tbody&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">cs_albums</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bs4.BeautifulSoup
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;i&gt;&lt;a class=&quot;mw-redirect&quot; href=&quot;/wiki/1989_(Taylor_Swift_album)&quot; title=&quot;1989 (Taylor Swift album)&quot;&gt;1989&lt;/a&gt;&lt;/i&gt;,
+ &lt;i&gt;&lt;a href=&quot;/wiki/2014_Forest_Hills_Drive&quot; title=&quot;2014 Forest Hills Drive&quot;&gt;2014 Forest Hills Drive&lt;/a&gt;&lt;/i&gt;]
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span>
+</pre></div>
 </div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;mw-redirect&quot; href=&quot;/wiki/1989_(Taylor_Swift_album)&quot; title=&quot;1989 (Taylor Swift album)&quot;&gt;1989&lt;/a&gt;
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;1989&#39;
+</pre></div>
 </div>
 </section>
-<section id="from-here-i-explored-the-websit-using-inspect-and-found-tbody-was-holding-all-of-the-lists-of-names-and-links">
-<h2>From here I explored the websit using inspect and found ‘tbody’ was holding all of the lists of names and links<a class="headerlink" href="#from-here-i-explored-the-websit-using-inspect-and-found-tbody-was-holding-all-of-the-lists-of-names-and-links" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span> <span class="o">=</span> <span class="n">cs_albums</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;tbody&#39;</span><span class="p">)</span>
+<section id="getting-consistency">
+<h2>Getting consistency<a class="headerlink" href="#getting-consistency" title="Permalink to this heading">#</a></h2>
+<p>Searching trhrough tags we can scrape a single name, now we can apply this to the entire wiki_content. I define a start to the url since its not included in the href to construct working url’s. The next step was isolating the runtime and year released from the constructed link, then applying the method to everything.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">album_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)]</span>
 </pre></div>
 </div>
-</div>
-</div>
-</section>
-<section id="i-found-all-the-links-to-the-individual-albums-were-wrapped-in-i-tags-using-a-i-can-isolate-the-individual-links-and-names">
-<h2>I found all the links to the individual albums were wrapped in i tags, using “.a” I can isolate the individual links and names<a class="headerlink" href="#i-found-all-the-links-to-the-individual-albums-were-wrapped-in-i-tags-using-a-i-can-isolate-the-individual-links-and-names" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">album_names</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;1989&#39;, &#39;2014 Forest Hills Drive&#39;]
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;a&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="i-test-looping-through-wiki-content-1-to-make-sure-i-can-get-all-the-names">
-<h2>I test looping through wiki_content[1] to make sure I can get all the names<a class="headerlink" href="#i-test-looping-through-wiki-content-1-to-make-sure-i-can-get-all-the-names" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album_names</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="i-then-apply-this-to-the-entire-wiki-content-list">
-<h2>I then apply this to the entire wiki_content list<a class="headerlink" href="#i-then-apply-this-to-the-entire-wiki-content-list" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">wiki_content</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">album_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">wiki_content</span> 
                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">name</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span> 
                <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">a</span> <span class="ow">and</span> <span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">string</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-</section>
-<section id="i-test-getting-the-links-and-concatenate-the-front-of-the-wiki-website">
-<h2>I test getting the links and concatenate the front of the wiki website<a class="headerlink" href="#i-test-getting-the-links-and-concatenate-the-front-of-the-wiki-website" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;a class=&quot;mw-redirect&quot; href=&quot;/wiki/1989_(Taylor_Swift_album)&quot; title=&quot;1989 (Taylor Swift album)&quot;&gt;1989&lt;/a&gt;
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_start</span> <span class="o">=</span> <span class="s2">&quot;https://en.wikipedia.org&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;/wiki/1989_(Taylor_Swift_album)&#39;
+</pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url_start</span> <span class="o">=</span> <span class="s2">&quot;https://en.wikipedia.org&quot;</span>
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_url</span> <span class="o">=</span> <span class="n">url_start</span> <span class="o">+</span> <span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_url</span> <span class="o">=</span> <span class="n">url_start</span> <span class="o">+</span> <span class="n">wiki_content</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
 <span class="n">test_url</span>
 </pre></div>
 </div>
-</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;https://en.wikipedia.org/wiki/1989_(Taylor_Swift_album)&#39;
+</pre></div>
 </div>
 </section>
-<section id="i-test-getting-the-runtime-and-year-released-from-the-constructed-link">
-<h2>I test getting the runtime and year released from the constructed link<a class="headerlink" href="#i-test-getting-the-runtime-and-year-released-from-the-constructed-link" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">test_url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+<section id="getting-the-runtime-and-year-released-from-the-constructed-link">
+<h2>Getting the runtime and year released from the constructed link<a class="headerlink" href="#getting-the-runtime-and-year-released-from-the-constructed-link" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">test_url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
 <span class="n">test_info</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">test_html</span><span class="p">,</span><span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;span class=&quot;min&quot;&gt;48&lt;/span&gt;
+</pre></div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_min</span> <span class="o">=</span> <span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_min</span> <span class="o">=</span> <span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
 <span class="n">test_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">test_min</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 <span class="n">test_min</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;bday dtstart published updated itvstart&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>48
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;bday dtstart published updated itvstart&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
+</pre></div>
 </div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;2014-10-27&#39;
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_date</span> <span class="o">=</span> <span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;bday dtstart published updated itvstart&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_date</span> <span class="o">=</span> <span class="n">test_info</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;bday dtstart published updated itvstart&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">string</span>
 <span class="n">test_date</span>
 </pre></div>
 </div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;2014-10-27&#39;
+</pre></div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_year</span> <span class="o">=</span> <span class="n">test_date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_year</span> <span class="o">=</span> <span class="n">test_date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">test_year</span>
 </pre></div>
 </div>
-</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;2014&#39;
+</pre></div>
 </div>
 </section>
-<section id="i-first-construct-all-the-links">
-<h2>I first construct all the links<a class="headerlink" href="#i-first-construct-all-the-links" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album_links</span> <span class="o">=</span> <span class="p">[</span><span class="n">url_start</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> 
+<section id="method-to-construct-links">
+<h2>Method to construct Links<a class="headerlink" href="#method-to-construct-links" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">album_links</span> <span class="o">=</span> <span class="p">[</span><span class="n">url_start</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> 
                <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">wiki_content</span> 
                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">link</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span> 
                <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">a</span> <span class="ow">and</span> <span class="s1">&#39;href&#39;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">attrs</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album_links</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">album_links</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;https://en.wikipedia.org/wiki/2014_Forest_Hills_Drive&#39;
+</pre></div>
 </div>
 </section>
 <section id="after-finding-out-how-to-extract-the-run-time-i-use-a-loop-to-do-requests-through-all-associated-links">
 <h2>After finding out how to extract the run time I use a loop to do requests through all associated links<a class="headerlink" href="#after-finding-out-how-to-extract-the-run-time-i-use-a-loop-to-do-requests-through-all-associated-links" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">album_years</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">album_years</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">run_time</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">time_size</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_size</span> <span class="o">=</span> <span class="p">[]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_time</span> <span class="o">=</span> <span class="p">[]</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>I also added a time_size catagory to help group by times</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">test_url</span> <span class="ow">in</span> <span class="n">album_links</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">test_url</span> <span class="ow">in</span> <span class="n">album_links</span><span class="p">:</span>
     
     <span class="n">test_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">test_url</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
     <span class="n">test_info</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">test_html</span><span class="p">,</span><span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
@@ -638,133 +538,492 @@ document.write(`
         <span class="n">album_years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Album Name&#39;</span><span class="p">:</span><span class="n">album_names</span><span class="p">,</span> <span class="s1">&#39;Release Year&#39;</span><span class="p">:</span><span class="n">album_years</span><span class="p">,</span> <span class="s1">&#39;Length Rating&#39;</span><span class="p">:</span><span class="n">time_size</span><span class="p">,</span> <span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">:</span><span class="n">run_time</span><span class="p">,</span><span class="s1">&#39;links&#39;</span><span class="p">:</span><span class="n">album_links</span><span class="p">})</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Album Name&#39;</span><span class="p">:</span><span class="n">album_names</span><span class="p">,</span> <span class="s1">&#39;Release Year&#39;</span><span class="p">:</span><span class="n">album_years</span><span class="p">,</span> <span class="s1">&#39;Length Rating&#39;</span><span class="p">:</span><span class="n">time_size</span><span class="p">,</span> <span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">:</span><span class="n">run_time</span><span class="p">,</span><span class="s1">&#39;links&#39;</span><span class="p">:</span><span class="n">album_links</span><span class="p">})</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="i-drop-all-n-a-s-and-duplicates">
 <h2>I drop all N/A’s and duplicates<a class="headerlink" href="#i-drop-all-n-a-s-and-duplicates" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_df</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_df</span>
 </pre></div>
 </div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
 </div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Album Name</th>
+      <th>Release Year</th>
+      <th>Length Rating</th>
+      <th>Run-Time(Mins)</th>
+      <th>links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1989</td>
+      <td>2014</td>
+      <td>Average</td>
+      <td>48</td>
+      <td>https://en.wikipedia.org/wiki/1989_(Taylor_Swi...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014 Forest Hills Drive</td>
+      <td>2014</td>
+      <td>Long</td>
+      <td>64</td>
+      <td>https://en.wikipedia.org/wiki/2014_Forest_Hill...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1989</td>
+      <td>2014</td>
+      <td>Average</td>
+      <td>48</td>
+      <td>https://en.wikipedia.org/wiki/1989_(Taylor_Swi...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Title</td>
+      <td>2015</td>
+      <td>Short</td>
+      <td>32</td>
+      <td>https://en.wikipedia.org/wiki/Title_(album)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>American Beauty/American Psycho</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>https://en.wikipedia.org/wiki/American_Beauty/...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>444</th>
+      <td>Billboard Philippines</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>https://en.wikipedia.org/wiki/Billboard_Philip...</td>
+    </tr>
+    <tr>
+      <th>445</th>
+      <td>Billboard Türkiye</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>https://en.wikipedia.org/wiki/Billboard_T%C3%B...</td>
+    </tr>
+    <tr>
+      <th>446</th>
+      <td>Billboard Việt Nam</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>https://en.wikipedia.org/wiki/Billboard_Vi%E1%...</td>
+    </tr>
+    <tr>
+      <th>447</th>
+      <td>Music &amp; Media</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>https://en.wikipedia.org/wiki/Music_%26_Media</td>
+    </tr>
+    <tr>
+      <th>448</th>
+      <td>Billboard Radio Monitor</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
+      <td>https://en.wikipedia.org/wiki/Billboard_Radio_...</td>
+    </tr>
+  </tbody>
+</table>
+<p>449 rows × 5 columns</p>
 </div>
 </section>
 <section id="i-start-cleaning-my-data-br-removing-all-na-s-and-duplicates">
 <h2>I start cleaning my data br removing all na’s and duplicates<a class="headerlink" href="#i-start-cleaning-my-data-br-removing-all-na-s-and-duplicates" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span> <span class="o">=</span> <span class="n">albums_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span> <span class="o">=</span> <span class="n">albums_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span> <span class="o">=</span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
 </pre></div>
 </div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Album Name</th>
+      <th>Release Year</th>
+      <th>Length Rating</th>
+      <th>Run-Time(Mins)</th>
+      <th>links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>355</td>
+      <td>355</td>
+      <td>355</td>
+      <td>355</td>
+      <td>355</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>302</td>
+      <td>14</td>
+      <td>4</td>
+      <td>79</td>
+      <td>303</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>A Star Is Born</td>
+      <td>2017</td>
+      <td>Average</td>
+      <td>48</td>
+      <td>https://en.wikipedia.org/wiki/A_Star_Is_Born_(...</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>8</td>
+      <td>47</td>
+      <td>203</td>
+      <td>18</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span> <span class="o">=</span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span>
 </pre></div>
 </div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
 </div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Album Name</th>
+      <th>Release Year</th>
+      <th>Length Rating</th>
+      <th>Run-Time(Mins)</th>
+      <th>links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1989</td>
+      <td>2014</td>
+      <td>Average</td>
+      <td>48</td>
+      <td>https://en.wikipedia.org/wiki/1989_(Taylor_Swi...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014 Forest Hills Drive</td>
+      <td>2014</td>
+      <td>Long</td>
+      <td>64</td>
+      <td>https://en.wikipedia.org/wiki/2014_Forest_Hill...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Title</td>
+      <td>2015</td>
+      <td>Short</td>
+      <td>32</td>
+      <td>https://en.wikipedia.org/wiki/Title_(album)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Now 53</td>
+      <td>2015</td>
+      <td>Long</td>
+      <td>74</td>
+      <td>https://en.wikipedia.org/wiki/Now_That%27s_Wha...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>If You're Reading This It's Too Late</td>
+      <td>2015</td>
+      <td>Long</td>
+      <td>68</td>
+      <td>https://en.wikipedia.org/wiki/If_You%27re_Read...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>428</th>
+      <td>F-1 Trillion</td>
+      <td>2024</td>
+      <td>Average</td>
+      <td>57</td>
+      <td>https://en.wikipedia.org/wiki/F-1_Trillion</td>
+    </tr>
+    <tr>
+      <th>429</th>
+      <td>Days Before Rodeo</td>
+      <td>2014</td>
+      <td>Average</td>
+      <td>50</td>
+      <td>https://en.wikipedia.org/wiki/Days_Before_Rodeo</td>
+    </tr>
+    <tr>
+      <th>430</th>
+      <td>Crazy</td>
+      <td>2024</td>
+      <td>Very Short</td>
+      <td>14</td>
+      <td>https://en.wikipedia.org/wiki/Crazy_(Le_Sseraf...</td>
+    </tr>
+    <tr>
+      <th>431</th>
+      <td>Luck and Strange</td>
+      <td>2024</td>
+      <td>Average</td>
+      <td>43</td>
+      <td>https://en.wikipedia.org/wiki/Luck_and_Strange</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>The Rise and Fall of a Midwest Princess</td>
+      <td>2023</td>
+      <td>Average</td>
+      <td>49</td>
+      <td>https://en.wikipedia.org/wiki/The_Rise_and_Fal...</td>
+    </tr>
+  </tbody>
+</table>
+<p>304 rows × 5 columns</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</pre></div>
+</div>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Album Name</th>
+      <th>Release Year</th>
+      <th>Length Rating</th>
+      <th>Run-Time(Mins)</th>
+      <th>links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>304</td>
+      <td>304</td>
+      <td>304</td>
+      <td>304</td>
+      <td>304</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>302</td>
+      <td>14</td>
+      <td>4</td>
+      <td>79</td>
+      <td>303</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>The Album</td>
+      <td>2017</td>
+      <td>Average</td>
+      <td>41</td>
+      <td>https://en.wikipedia.org/wiki/Face_the_Sun</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>2</td>
+      <td>42</td>
+      <td>179</td>
+      <td>16</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 </section>
-<section id="i-noticed-we-really-only-get-relevant-data-from-2015-so-i-drop-anything-earlier-than-2015">
-<h2>I noticed we really only get relevant data from 2015, so I drop anything earlier than 2015<a class="headerlink" href="#i-noticed-we-really-only-get-relevant-data-from-2015-so-i-drop-anything-earlier-than-2015" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Release Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<section id="removing-irrelevant-data">
+<h2>Removing irrelevant Data<a class="headerlink" href="#removing-irrelevant-data" title="Permalink to this heading">#</a></h2>
+<p>I noticed we really only get relevant data from starting from 2015, theres not much to comapir from 2014 since only 4 albums are listed and the years below that seem to be dummy variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Release Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span> <span class="o">=</span> <span class="n">albums_clean_df</span><span class="p">[</span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Release Year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2015</span><span class="p">]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Release Year
+2017    42
+2016    34
+2020    34
+2019    31
+2021    30
+2023    30
+2018    29
+2015    28
+2022    20
+2024    19
+2014     4
+2001     1
+1967     1
+1969     1
+Name: count, dtype: int64
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Release Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span> <span class="o">=</span> <span class="n">albums_clean_df</span><span class="p">[</span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Release Year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2015</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Length Rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Release Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Release Year
+2017    42
+2016    34
+2020    34
+2019    31
+2021    30
+2023    30
+2018    29
+2015    28
+2022    20
+2024    19
+Name: count, dtype: int64
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Length Rating&#39;</span><span class="p">)[</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Length Rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">albums_clean_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Release Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Length Rating
+Average       175
+Long           69
+Short          38
+Very Short     15
+Name: count, dtype: int64
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">albums_clean_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Release Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Length Rating&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="p">[</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>50.51851851851852
+</pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Length Rating&#39;</span><span class="p">)[</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
 </div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Length Rating
+Average           45.56
+Long          83.057971
+Short         28.052632
+Very Short         15.6
+Name: Run-Time(Mins), dtype: object
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">albums_clean_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Release Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Release Year&#39;, ylabel=&#39;Run-Time(Mins)&#39;&gt;
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_48_1.png" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">albums_clean_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Release Year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Length Rating&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1a0ea0538f0&gt;
+</pre></div>
+</div>
+<p><img alt="png" src="_images/output_49_1.png" /></p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="summery">
+<h1>Summery<a class="headerlink" href="#summery" title="Permalink to this heading">#</a></h1>
 <p>Overall, top chart albums stay around 45 minutes.  If we combine counts of small ,very small, and long albums we come to 122 which is still lower than average at 175.  I would say this leads to inconclusive data, if anything this may say more about the amount of work the music indusry puts into projects. Removing duplicates was useful but It would be more useful to observe months in the year to see if theres any dominating artists that write longer or shorter albums.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Album_Runtime.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Album_Runtime.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </section>
 
@@ -807,6 +1066,15 @@ document.write(`
         <p class="prev-next-title">Regression and Optimization</p>
       </div>
     </a>
+    <a class="right-next"
+       href="loading_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exploring Data Sets</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -822,23 +1090,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Top Albums and Runtime</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Top Albums and Runtime with Web Scraping</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-does-album-run-time-have-anything-to-do-with-being-a-top-selling-album-in-a-year">Question: Does album run time have anything to do with being a top selling album in a year?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-thing-i-do-is-create-the-bs4-object">The first thing I do is create the bs4 object</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-here-i-explored-the-websit-using-inspect-and-found-tbody-was-holding-all-of-the-lists-of-names-and-links">From here I explored the websit using inspect and found ‘tbody’ was holding all of the lists of names and links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-found-all-the-links-to-the-individual-albums-were-wrapped-in-i-tags-using-a-i-can-isolate-the-individual-links-and-names">I found all the links to the individual albums were wrapped in i tags, using “.a” I can isolate the individual links and names</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-test-looping-through-wiki-content-1-to-make-sure-i-can-get-all-the-names">I test looping through wiki_content[1] to make sure I can get all the names</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-then-apply-this-to-the-entire-wiki-content-list">I then apply this to the entire wiki_content list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-test-getting-the-links-and-concatenate-the-front-of-the-wiki-website">I test getting the links and concatenate the front of the wiki website</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-test-getting-the-runtime-and-year-released-from-the-constructed-link">I test getting the runtime and year released from the constructed link</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-first-construct-all-the-links">I first construct all the links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bs4-object">The bs4 object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-consistency">Getting consistency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-runtime-and-year-released-from-the-constructed-link">Getting the runtime and year released from the constructed link</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-to-construct-links">Method to construct Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#after-finding-out-how-to-extract-the-run-time-i-use-a-loop-to-do-requests-through-all-associated-links">After finding out how to extract the run time I use a loop to do requests through all associated links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-drop-all-n-a-s-and-duplicates">I drop all N/A’s and duplicates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-start-cleaning-my-data-br-removing-all-na-s-and-duplicates">I start cleaning my data br removing all na’s and duplicates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-noticed-we-really-only-get-relevant-data-from-2015-so-i-drop-anything-earlier-than-2015">I noticed we really only get relevant data from 2015, so I drop anything earlier than 2015</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-irrelevant-data">Removing irrelevant Data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summery">Summery</a></li>
 </ul>
 
   </nav></div>
