@@ -3,7 +3,7 @@
 - My question was related to my interests in the music world, friends of mine always said "short pop songs are all that matter" so I wanted to see if album run time varied across the hit albums of the last few years.
 - This was a fantastic exercise in actually understanding how data scientists might collect data but also how much is needed to come to a real conclusion, my analysis was good but it was clear I need another piece to this story, data that would show what the average album runtime was to compare.
 - It’s also interesting because Taylor swift dominated the charts and had relatively long albums, but that doesn’t mean we should assume she's popular from this alone as there are obviously other factors in play.
-- A more interesting rout would be to see if upcoming stars and groups tend to release longer or shorter albums. 
+- A more interesting route would be to see if upcoming stars and groups tend to release longer or shorter albums. 
 
 ## Question: Does album run time have anything to do with being a top selling album in a year?
 
@@ -290,8 +290,6 @@ for test_url in album_links:
 ```python
 albums_df = pd.DataFrame({'Album Name':album_names, 'Release Year':album_years, 'Length Rating':time_size, 'Run-Time(Mins)':run_time,'links':album_links})
 ```
-
-## I drop all N/A's and duplicates
 
 
 ```python
@@ -847,16 +845,11 @@ sns.catplot(data=albums_clean_df,x='Release Year', y='Run-Time(Mins)',kind='bar'
     
 
 
-# Summery
+# Summary
 
 Overall, top chart albums stay around 45 minutes.  If we combine counts of small ,very small, and long albums we come to 122 which is still lower than average at 175.  I would say this leads to inconclusive data, if anything this may say more about the amount of work the music indusry puts into projects. Removing duplicates was useful but It would be more useful to observe months in the year to see if theres any dominating artists that write longer or shorter albums.
 
 
 ```python
 albums_clean_df.to_csv('Album_Runtime.csv', index=False)
-```
-
-
-```python
-
 ```
