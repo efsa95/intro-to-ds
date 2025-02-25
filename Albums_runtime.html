@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Albums_runtime';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Exploring Data Sets" href="loading_data.html" />
-    <link rel="prev" title="Regression and Optimization" href="Assignment9.html" />
+    <link rel="next" title="Fake News" href="Fake_News.html" />
+    <link rel="prev" title="Regression and Optimization" href="regOp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -148,8 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="CSC 310 Portfolio - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="CSC 310 Portfolio - Home"/>`);</script>
   
-    <p class="title logo__title">CSC 310 Portfolio</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -164,16 +170,22 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="explore_coffee.html">Quality Testing and Visuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Assignment7.html">Wine Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Assignment8.html">Wine Clustering</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Assignment9.html">Regression and Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regOp.html">Regression and Optimization</a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Top Albums and Runtime with Web Scraping</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Fake_News.html">Fake News</a></li>
+
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Small Projects</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="loading_data.html">Exploring Data Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explore_coffee.html">Quality Testing and Visuals</a></li>
+
 </ul>
 
     </div>
@@ -329,12 +341,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-runtime-and-year-released-from-the-constructed-link">Getting the runtime and year released from the constructed link</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-to-construct-links">Method to construct Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#after-finding-out-how-to-extract-the-run-time-i-use-a-loop-to-do-requests-through-all-associated-links">After finding out how to extract the run time I use a loop to do requests through all associated links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-drop-all-n-a-s-and-duplicates">I drop all N/A’s and duplicates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-start-cleaning-my-data-br-removing-all-na-s-and-duplicates">I start cleaning my data br removing all na’s and duplicates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-irrelevant-data">Removing irrelevant Data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summery">Summery</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 
             </nav>
@@ -354,7 +365,7 @@ document.write(`
 <li><p>My question was related to my interests in the music world, friends of mine always said “short pop songs are all that matter” so I wanted to see if album run time varied across the hit albums of the last few years.</p></li>
 <li><p>This was a fantastic exercise in actually understanding how data scientists might collect data but also how much is needed to come to a real conclusion, my analysis was good but it was clear I need another piece to this story, data that would show what the average album runtime was to compare.</p></li>
 <li><p>It’s also interesting because Taylor swift dominated the charts and had relatively long albums, but that doesn’t mean we should assume she’s popular from this alone as there are obviously other factors in play.</p></li>
-<li><p>A more interesting rout would be to see if upcoming stars and groups tend to release longer or shorter albums.</p></li>
+<li><p>A more interesting route would be to see if upcoming stars and groups tend to release longer or shorter albums.</p></li>
 </ul>
 <section id="question-does-album-run-time-have-anything-to-do-with-being-a-top-selling-album-in-a-year">
 <h2>Question: Does album run time have anything to do with being a top selling album in a year?<a class="headerlink" href="#question-does-album-run-time-have-anything-to-do-with-being-a-top-selling-album-in-a-year" title="Permalink to this heading">#</a></h2>
@@ -541,9 +552,6 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Album Name&#39;</span><span class="p">:</span><span class="n">album_names</span><span class="p">,</span> <span class="s1">&#39;Release Year&#39;</span><span class="p">:</span><span class="n">album_years</span><span class="p">,</span> <span class="s1">&#39;Length Rating&#39;</span><span class="p">:</span><span class="n">time_size</span><span class="p">,</span> <span class="s1">&#39;Run-Time(Mins)&#39;</span><span class="p">:</span><span class="n">run_time</span><span class="p">,</span><span class="s1">&#39;links&#39;</span><span class="p">:</span><span class="n">album_links</span><span class="p">})</span>
 </pre></div>
 </div>
-</section>
-<section id="i-drop-all-n-a-s-and-duplicates">
-<h2>I drop all N/A’s and duplicates<a class="headerlink" href="#i-drop-all-n-a-s-and-duplicates" title="Permalink to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_df</span>
 </pre></div>
 </div>
@@ -1016,13 +1024,10 @@ Name: Run-Time(Mins), dtype: object
 <p><img alt="png" src="_images/output_49_1.png" /></p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="summery">
-<h1>Summery<a class="headerlink" href="#summery" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
 <p>Overall, top chart albums stay around 45 minutes.  If we combine counts of small ,very small, and long albums we come to 122 which is still lower than average at 175.  I would say this leads to inconclusive data, if anything this may say more about the amount of work the music indusry puts into projects. Removing duplicates was useful but It would be more useful to observe months in the year to see if theres any dominating artists that write longer or shorter albums.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">albums_clean_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Album_Runtime.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </section>
@@ -1058,7 +1063,7 @@ Name: Run-Time(Mins), dtype: object
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Assignment9.html"
+       href="regOp.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1067,11 +1072,11 @@ Name: Run-Time(Mins), dtype: object
       </div>
     </a>
     <a class="right-next"
-       href="loading_data.html"
+       href="Fake_News.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exploring Data Sets</p>
+        <p class="prev-next-title">Fake News</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1097,12 +1102,11 @@ Name: Run-Time(Mins), dtype: object
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-runtime-and-year-released-from-the-constructed-link">Getting the runtime and year released from the constructed link</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-to-construct-links">Method to construct Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#after-finding-out-how-to-extract-the-run-time-i-use-a-loop-to-do-requests-through-all-associated-links">After finding out how to extract the run time I use a loop to do requests through all associated links</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-drop-all-n-a-s-and-duplicates">I drop all N/A’s and duplicates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-start-cleaning-my-data-br-removing-all-na-s-and-duplicates">I start cleaning my data br removing all na’s and duplicates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-irrelevant-data">Removing irrelevant Data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summery">Summery</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 
   </nav></div>
