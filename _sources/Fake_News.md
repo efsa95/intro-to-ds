@@ -3233,9 +3233,4 @@ sns.heatmap(euclidean_distances(X_test_text_tfidf[subset_rows]))
 
 Using the whole body text of articles is more telling of weather its fake or not. Its clear that feeding the models with more data showed better results, body text having a higher word count allowed for more comparison and complex matrices.  The trends in this data show MultinomialNB will start to plateau with these kinds of predictions. Titles can have maybe 10 unique words at most where the articles have much much more, a quick google search shows on average a single paragraph has about 200 words.  This shows that feeding MultinomialNB even more articles/titles will have diminishing returns, this points to the need of a more complex model.
 
-## Practical Use
 
-
-```python
-
-```
