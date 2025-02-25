@@ -1,4 +1,4 @@
-# Regression and Optimization 
+# Regression, Optimization, and Life Expectancy 
 In this project we had to find a dataset suitible for linear regression.  Through testing, fitting, and optimizing models we needed to Interpret the model and its performance in terms of the application.
 
 

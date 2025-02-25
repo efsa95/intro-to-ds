@@ -1,4 +1,4 @@
-# Fake News
+# Fake News Vs Real News
 In this political landscape "Fake News" is a big buzz word, defining it is a discussion for it self but what we have here is a collections of verifiably falsified reportings paired with reporting on true events.  The difference between "fake news" and "real news" is real news isn't trying to convince you of anything its just the truth being reported on, fake news is actively trying to present skewed facts with the intent to change the readers mind. Through the use of AI tools we can see there is a data driven difference that can be realized to help us determine if something is falsified.  While I'd never expect this kind of analysis to change someones mind its at least an unignorable fact that "Fake news" is at least structurally different in its presentation.
 
 
