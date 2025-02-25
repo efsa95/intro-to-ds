@@ -3,9 +3,12 @@ root: README
 parts:
 - caption: Projects
   chapters:
-    - file: explore_coffee.md
-    - file: Assignment9
+    - file: Assignment7.md
+    - file: Assignment8.md
+    - file: regOp.md
     - file: Albums_runtime.md
+    - file: Fake_News.md
 - caption: Small Projects
   chapters:
     - file: loading_data.md
+    - file: explore_coffee.md
